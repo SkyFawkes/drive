@@ -5,12 +5,10 @@ int ch3;              // receiver channel 3
 int x;                // ch1 to motor
 int y;                // ch3 to motor
 
-int ch1_high = 1215;     // highest input value for ch1
-int ch1_low = 1727;      // lowest input value for ch1
-int ch2_high = 1261;     // highest input value for ch2
-int ch2_low = 1773;      // lowest input value for ch2
+int ch1_high = 2002;     // highest input value for ch1
+int ch1_low = 984;      // lowest input value for ch1
 int ch3_high = 2003;     // highest input value for ch3
-int ch3_low = 986;      // lowest input value for ch3
+int ch3_low = 984;      // lowest input value for ch3
 
 void setup() {
   pinMode(4, INPUT);  // channel 1 connected to pin 4
@@ -23,11 +21,11 @@ void loop() {
   // read the pulse width of each channel
   ch1 = pulseIn(4, HIGH, 25000);
   ch3 = pulseIn(13, HIGH, 25000);
-
-  ///Serial.print(ch2);
-  ///Serial.println();
-  ///delay(200);
-
+/*
+  Serial.print(ch3);
+  Serial.println();
+  delay(200);
+*/
   // remap and constrain values to values the motor driver can use
   x = map(ch1, ch1_low, ch1_high, -480, 480);
   x = constrain(x, -480, 480);
@@ -39,5 +37,5 @@ void loop() {
   Serial.print("  ");
   Serial.print(y);
   Serial.println();
-  //delay(100);
+  delay(100);
 }
