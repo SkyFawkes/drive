@@ -1,4 +1,10 @@
-// Input from RC controller code: https://www.sparkfun.com/tutorials/348
+'''
+Working code to control motors with a Pololu Dual G2 High Power Motor Driver,
+via an Arduino taking input data from a FrSky D4R-II receiver,
+getting signals from a Taranis X9D+ RC controller
+
+Input from RC controller code: www.sparkfun.com/tutorials/348
+'''
 
 int ch1;              // receiver channel 1
 int ch3;              // receiver channel 3
@@ -37,5 +43,5 @@ void loop() {
   Serial.print("  ");
   Serial.print(y);
   Serial.println();
-  delay(100);
+  //delay(100);
 }
