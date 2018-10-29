@@ -5,6 +5,7 @@ getting signals from a Taranis X9D+ RC controller
 '''
 
 from dual_g2_hpmd_rpi import motors
+from time import sleep
 import serial
 
 ser = serial.Serial('/dev/ttyUSB0', 9600)
@@ -19,10 +20,15 @@ def arduino_input():
     motor_speeds = []
     read_serial = ser.readline()
     new = str(read_serial).split()
-    motor_speeds.append(int(new[0][2:]))
-    motor_speeds.append(int(new[1][:-5]))
-    return motor_speeds
+    try:
+        motor_speeds.append(int(new[0][2:]))
+        motor_speeds.append(int(new[1][:-5]))
+        return motor_speeds
+    except:
+        print(new)
+        pass
 
 while True:
     speed = arduino_input()
     motors.setSpeeds(speed[0], speed[1])
+    sleep(0.01)
