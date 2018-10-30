@@ -9,6 +9,7 @@ from time import sleep
 import serial
 
 ser = serial.Serial('/dev/ttyUSB0', 9600)
+motors.enable()
 
 def arduino_input():
     '''
